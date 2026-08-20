@@ -4,33 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Raviraj Chhasatiya — Full Stack Developer & Architect with 4+ years building production-grade enterprise applications across FinTech, HRMS and SaaS.">
-    <title>Raviraj Chhasatiya — Full Stack Developer & Architect</title>
+    <meta name="description" content="Raviraj Chhasatiya — Senior Full-Stack Engineer & System Architect with 4+ years designing and shipping production-grade software across FinTech, HRMS, SaaS, and Cloud APIs.">
+    <meta name="keywords" content="Raviraj Chhasatiya, Senior Full-Stack Engineer, Laravel Developer, PHP Architect, Vue.js Developer, React.js, REST APIs, Redis, AWS, MySQL">
+    <meta name="author" content="Raviraj Chhasatiya">
+    <title>Raviraj Chhasatiya — Senior Full-Stack Engineer & System Architect</title>
+    
+    <!-- OpenGraph Social Metadata -->
+    <meta property="og:title" content="Raviraj Chhasatiya — Senior Full-Stack Engineer & Architect">
+    <meta property="og:description" content="Building production-grade software, APIs, and scalable cloud applications for enterprise businesses.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raviraj.dev">
+    <meta property="og:image" content="hero.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Raviraj Chhasatiya — Senior Full-Stack Engineer">
+    <meta name="twitter:description" content="Production-grade Laravel, Vue, React & Cloud Architect.">
+    
+    <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Raviraj Chhasatiya",
+      "jobTitle": "Senior Full-Stack Engineer & System Architect",
+      "email": "mailto:chhasatiyaravi1904@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Zignuts Technolab Pvt. Ltd."
+      },
+      "knowsAbout": [
+        "Software Architecture",
+        "Laravel",
+        "PHP",
+        "Vue.js",
+        "React.js",
+        "REST APIs",
+        "Redis",
+        "MySQL",
+        "AWS",
+        "Docker"
+      ]
+    }
+    </script>
 </head>
 
 <body>
     <nav class="nav">
         <div class="container nav-inner">
-            <a class="logo" href="#"><span class="logo-full">Raviraj Chhasatiya</span><span class="logo-mark">R.</span></a>
-            <button class="menu" aria-label="Toggle navigation">☰</button>
-            <div class="nav-links">
-                <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Domains</a><a
-                    href="#skills">Skills</a><a href="#contact">Contact</a>
+            <a class="logo" href="#" aria-label="Raviraj Chhasatiya Home"><span class="logo-full">Raviraj Chhasatiya</span><span class="logo-mark">R.</span></a>
+            <button class="menu" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#projects">Work</a>
+                <a href="#experience">Experience</a>
+                <a href="#capabilities">Capabilities</a>
+                <a href="#skills">Stack</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="resume.pdf" class="nav-resume-btn" target="_blank" rel="noopener">Resume ↗</a>
             </div>
             <div class="nav-actions">
                 <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Light or Dark Theme" title="Toggle Theme">
                     <span class="theme-icon sun-icon">☀️</span>
                     <span class="theme-icon moon-icon">🌙</span>
                 </button>
-                <div class="status-badge">
+                <div class="status-badge" title="Open to Senior Engineering Opportunities">
                     <span class="pulse-dot"></span>
-                    <span>Available for Opportunities</span>
+                    <span>Open to Opportunities</span>
                 </div>
             </div>
         </div>
@@ -42,19 +88,91 @@
             <div class="orb2"></div>
             <div class="container hero-content reveal">
                 <div class="hero-text">
-                    <span class="eyebrow">Raviraj Chhasatiya · Full Stack Developer & Architect</span>
-                    <h1>Building production-grade <span class="gradient">enterprise systems.</span></h1>
+                    <span class="eyebrow">Senior Full-Stack Engineer · Laravel · Vue · APIs</span>
+                    <h1>I build <span class="gradient">production-grade</span> software for complex businesses.</h1>
                     <p class="hero-copy">
-                        I build and ship production web applications, APIs, admin platforms and integrations — with 10+
-                        projects across HRMS, CRM, FinTech, energy, analytics and manufacturing.
+                        I design and ship scalable web applications, APIs, admin platforms, and enterprise integrations — from system architecture and database optimization to cloud production deployment.
                     </p>
+                    <div class="hero-tech-line">
+                        <span>Laravel</span> · <span>PHP</span> · <span>Vue</span> · <span>React</span> · <span>MySQL</span> · <span>Redis</span> · <span>AWS</span> · <span>Docker</span>
+                    </div>
                     <div class="actions">
-                        <a class="btn btn-primary" href="#projects">View selected work</a>
-                        <a class="btn btn-secondary" href="#contact">Let's connect</a>
+                        <a class="btn btn-primary" href="#projects">View My Work →</a>
+                        <a class="btn btn-secondary" href="resume.pdf" target="_blank" rel="noopener">Download Resume ↓</a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <img src="hero.png" alt="Web Development Illustration">
+                
+                <div class="hero-visual">
+                    <div class="system-visualizer glow-card" aria-hidden="true">
+                        <div class="sys-header">
+                            <div class="sys-status">
+                                <span class="pulse-dot"></span>
+                                <span>PRODUCTION SYSTEM ONLINE</span>
+                            </div>
+                            <div class="sys-meta">HEALTH 99.9%</div>
+                        </div>
+                        
+                        <div class="sys-grid">
+                            <div class="sys-stat-node">
+                                <span class="sys-node-label">API Status</span>
+                                <strong class="sys-node-val green">Active 200 OK</strong>
+                            </div>
+                            <div class="sys-stat-node">
+                                <span class="sys-node-label">Transactions</span>
+                                <strong class="sys-node-val blue">12,842 / day</strong>
+                            </div>
+                            <div class="sys-stat-node">
+                                <span class="sys-node-label">Queue Jobs</span>
+                                <strong class="sys-node-val purple">1,284 Async</strong>
+                            </div>
+                            <div class="sys-stat-node">
+                                <span class="sys-node-label">Integrations</span>
+                                <strong class="sys-node-val cyan">24 Connected</strong>
+                            </div>
+                        </div>
+
+                        <div class="sys-architecture-flow">
+                            <div class="sys-layer">
+                                <span class="sys-tag">Laravel 12</span>
+                                <span class="sys-arrow">➔</span>
+                                <span class="sys-tag">Redis Cache</span>
+                                <span class="sys-arrow">➔</span>
+                                <span class="sys-tag">MySQL DB</span>
+                            </div>
+                            <div class="sys-layer sub">
+                                <span class="sys-tag alt">AWS SQS</span>
+                                <span class="sys-arrow">➔</span>
+                                <span class="sys-tag alt">Sanctum Auth</span>
+                                <span class="sys-arrow">➔</span>
+                                <span class="sys-tag alt">Cloud S3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compact Proof Metrics Row -->
+            <div class="container hero-proof-container">
+                <div class="hero-proof-bar reveal glow-card">
+                    <div class="proof-item">
+                        <strong class="counter" data-target="4" data-suffix="+">0+</strong>
+                        <span>Years Experience</span>
+                    </div>
+                    <div class="proof-divider"></div>
+                    <div class="proof-item">
+                        <strong class="counter" data-target="10" data-suffix="+">0+</strong>
+                        <span>Production Projects</span>
+                    </div>
+                    <div class="proof-divider"></div>
+                    <div class="proof-item">
+                        <strong class="counter" data-target="5" data-suffix="+">0+</strong>
+                        <span>Business Domains</span>
+                    </div>
+                    <div class="proof-divider"></div>
+                    <div class="proof-item">
+                        <strong class="counter" data-target="20" data-suffix="+">0+</strong>
+                        <span>Integrations Delivered</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -179,6 +297,96 @@
             </div>
         </section>
 
+        <section id="capabilities">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <div class="kicker">ENGINEERING EXCELLENCE</div>
+                        <h2>Core Capabilities</h2>
+                    </div>
+                    <p>Building high-performance, maintainable software across the entire application lifecycle.</p>
+                </div>
+
+                <div class="capabilities-grid">
+                    <article class="capability-card reveal glow-card">
+                        <div class="cap-icon">🏗️</div>
+                        <h3>System Architecture</h3>
+                        <p>Designing maintainable application architecture, decoupled service boundaries, RESTful API design, and scalable backend infrastructure.</p>
+                        <div class="cap-tags"><span>Microservices</span><span>Laravel</span><span>Clean Code</span><span>RBAC</span></div>
+                    </article>
+
+                    <article class="capability-card reveal glow-card">
+                        <div class="cap-icon">🔌</div>
+                        <h3>APIs & Integrations</h3>
+                        <p>Production REST APIs, secure authentication (Sanctum/JWT), third-party payment gateways, banking integrations, and asynchronous job queues.</p>
+                        <div class="cap-tags"><span>REST APIs</span><span>Sanctum</span><span>JWT</span><span>SQS</span></div>
+                    </article>
+
+                    <article class="capability-card reveal glow-card">
+                        <div class="cap-icon">⚡</div>
+                        <h3>Performance & Scaling</h3>
+                        <p>Database query optimization, Redis cache strategies, background processing, memory management, and high-throughput application tuning.</p>
+                        <div class="cap-tags"><span>MySQL Tuning</span><span>Redis</span><span>Supervisor</span><span>Caching</span></div>
+                    </article>
+
+                    <article class="capability-card reveal glow-card">
+                        <div class="cap-icon">☁️</div>
+                        <h3>Cloud & Production</h3>
+                        <p>AWS cloud storage (S3), background queue handling (SQS), Docker containerization, automated deployments, monitoring, and live maintenance.</p>
+                        <div class="cap-tags"><span>AWS</span><span>Docker</span><span>Linux</span><span>CI/CD</span></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <div class="kicker">PRODUCTION SYSTEM DESIGN</div>
+                        <h2>How I build production systems.</h2>
+                    </div>
+                    <p>End-to-end data pipeline & integration architecture built for security, scalability, and 99.9% uptime.</p>
+                </div>
+
+                <div class="arch-pipeline reveal glow-card">
+                    <div class="arch-step">
+                        <div class="arch-step-num">01</div>
+                        <h4>Frontend Layer</h4>
+                        <p>Vue.js 2/3 · React.js · TypeScript · Flutter</p>
+                    </div>
+                    <div class="arch-arrow">➔</div>
+
+                    <div class="arch-step">
+                        <div class="arch-step-num">02</div>
+                        <h4>API & Auth Layer</h4>
+                        <p>Laravel REST APIs · Sanctum · JWT · RBAC</p>
+                    </div>
+                    <div class="arch-arrow">➔</div>
+
+                    <div class="arch-step">
+                        <div class="arch-step-num">03</div>
+                        <h4>Application Layer</h4>
+                        <p>Service Classes · Async Jobs · Supervisor</p>
+                    </div>
+                    <div class="arch-arrow">➔</div>
+
+                    <div class="arch-step">
+                        <div class="arch-step-num">04</div>
+                        <h4>Data & Cache</h4>
+                        <p>MySQL Optimization · Redis Caching</p>
+                    </div>
+                    <div class="arch-arrow">➔</div>
+
+                    <div class="arch-step">
+                        <div class="arch-step-num">05</div>
+                        <h4>Cloud & APIs</h4>
+                        <p>AWS S3 / SQS · Docker · Banking APIs</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="experience">
             <div class="container">
                 <div class="section-head reveal">
@@ -242,102 +450,100 @@
                 <div class="section-head reveal">
                     <div>
                         <div class="kicker">PRODUCTION PORTFOLIO</div>
-                        <h2>10+ products shipped to production.</h2>
+                        <h2>Selected production work.</h2>
                     </div>
-                    <p>Enterprise applications, SaaS platforms, dashboards, APIs and integrations built across different
-                        business domains.</p>
+                    <p>Enterprise systems, financial platforms, HRMS, SaaS products and business-critical integrations shipped to production.</p>
                 </div>
 
-                <div class="project-intro reveal">
-                    <div class="project-count"><strong>10+</strong><span>Production projects</span></div>
-                    <div class="project-count"><strong>End-to-end</strong><span>Backend, frontend & integrations</span>
-                    </div>
-                    <div class="project-count"><strong>Production</strong><span>Business-critical delivery</span></div>
-                </div>
-
-                <div class="projects production-projects">
-                    <article class="project reveal glow-card">
-                        <div>
-                            <div class="project-number">FINTECH & BANKING</div>
-                            <h3>Digital Banking & Financial Systems</h3>
-                            <p>Bank management, real-time dashboards, integration monitoring, audit trails and secure
-                                transaction lifecycle workflows for production financial applications.</p>
+                <!-- Featured Top Projects -->
+                <div class="featured-projects">
+                    <article class="project featured-card reveal glow-card">
+                        <div class="project-header">
+                            <div class="project-number">FINTECH · BANKING</div>
+                            <span class="enterprise-badge">Private Enterprise Project</span>
                         </div>
-                        <div class="project-tags"><span>Laravel 12</span><span>Filament
-                                4</span><span>Vue.js</span><span>React</span><span>Redis</span></div>
+                        <h3>Digital Banking & Financial Systems</h3>
+                        <p class="project-problem"><strong>Business Scope:</strong> Bank management, real-time dashboards, integration monitoring, audit trails, escrow workflows and transaction lifecycle management for production financial applications.</p>
+                        <div class="project-tags">
+                            <span>Laravel 12</span><span>Filament 4</span><span>Vue.js</span><span>React</span><span>Redis</span><span>MySQL</span>
+                        </div>
                     </article>
-                    <article class="project reveal glow-card">
-                        <div>
+
+                    <article class="project featured-card reveal glow-card">
+                        <div class="project-header">
                             <div class="project-number">HUMAN RESOURCES</div>
-                            <h3>HRMS & Workforce Platforms</h3>
-                            <p>Timesheet automation, attendance tracking, performance reporting, workflow approvals and
-                                project management for HR and productivity operations.</p>
+                            <span class="enterprise-badge">Private Enterprise Project</span>
                         </div>
-                        <div class="project-tags"><span>Laravel 8</span><span>Vue.js 2</span><span>AWS
-                                S3</span><span>AWS SQS</span></div>
+                        <h3>HRMS & Workforce Platform</h3>
+                        <p class="project-problem"><strong>Business Scope:</strong> Timesheet automation, attendance tracking, appraisal workflows, performance reporting, automated approvals, AWS S3 storage and SQS async background queue processing.</p>
+                        <div class="project-tags">
+                            <span>Laravel 8</span><span>Vue.js 2</span><span>AWS S3</span><span>AWS SQS</span><span>MySQL</span>
+                        </div>
                     </article>
-                    <article class="project reveal glow-card">
-                        <div>
+
+                    <article class="project featured-card reveal glow-card">
+                        <div class="project-header">
                             <div class="project-number">COMMUNITY SaaS</div>
-                            <h3>Multi-Region Member Management</h3>
-                            <p>Member management, REST APIs, granular permissions and role-based UI architecture for a
-                                community management SaaS platform.</p>
+                            <span class="enterprise-badge">Private Enterprise Project</span>
                         </div>
-                        <div class="project-tags"><span>Laravel 12</span><span>Vue.js
-                                3</span><span>React</span><span>TypeScript</span></div>
+                        <h3>Multi-Region Member Management</h3>
+                        <p class="project-problem"><strong>Business Scope:</strong> Multi-region member management, REST APIs, granular permissions, multi-role access hierarchy, and reactive UI architecture for a community SaaS platform.</p>
+                        <div class="project-tags">
+                            <span>Laravel 12</span><span>Vue 3</span><span>React</span><span>TypeScript</span><span>REST APIs</span>
+                        </div>
                     </article>
+                </div>
+
+                <!-- Secondary Projects Grid -->
+                <div class="secondary-projects-head">
+                    <h3>Additional Enterprise Systems</h3>
+                </div>
+                <div class="projects secondary-grid">
                     <article class="project reveal glow-card">
                         <div>
                             <div class="project-number">ENERGY & UTILITIES</div>
                             <h3>Solar Service Management</h3>
-                            <p>Mobile-first service management with REST APIs, inventory, dispatch workflows, Firebase
-                                OTP authentication and real-time notifications.</p>
+                            <p>Mobile-first service management with REST APIs, inventory, dispatch workflows, Firebase OTP authentication and real-time notifications.</p>
                         </div>
-                        <div class="project-tags"><span>Laravel
-                                11</span><span>Flutter</span><span>Firebase</span><span>MySQL</span></div>
+                        <div class="project-tags"><span>Laravel 11</span><span>Flutter</span><span>Firebase</span><span>MySQL</span></div>
                     </article>
+
                     <article class="project reveal glow-card">
                         <div>
                             <div class="project-number">CRM & SALES</div>
                             <h3>Customer & Lead Operations</h3>
-                            <p>Lead management, role hierarchy, account ownership, tele-calling and permission-driven
-                                business workflows for CRM operations.</p>
+                            <p>Lead management, role hierarchy, account ownership, tele-calling and permission-driven business workflows for CRM operations.</p>
                         </div>
-                        <div class="project-tags">
-                            <span>Laravel</span><span>Vue.js</span><span>RBAC</span><span>MySQL</span></div>
+                        <div class="project-tags"><span>Laravel</span><span>Vue.js</span><span>RBAC</span><span>MySQL</span></div>
                     </article>
+
                     <article class="project reveal glow-card">
                         <div>
                             <div class="project-number">ANALYTICS & REPORTING</div>
                             <h3>Business Intelligence & Data Exports</h3>
-                            <p>Data-driven dashboards, reporting workflows and structured exports designed for business
-                                analysis and operational decision-making.</p>
+                            <p>Data-driven dashboards, reporting workflows and structured exports designed for business analysis and operational decision-making.</p>
                         </div>
-                        <div class="project-tags">
-                            <span>Laravel</span><span>MySQL</span><span>Excel</span><span>Analytics</span></div>
+                        <div class="project-tags"><span>Laravel</span><span>MySQL</span><span>Excel</span><span>Analytics</span></div>
                     </article>
+
                     <article class="project reveal glow-card">
                         <div>
                             <div class="project-number">AUTHENTICATION & SECURITY</div>
                             <h3>Identity & Access Systems</h3>
-                            <p>Secure authentication and authorization flows using Sanctum, JWT and RBAC across multiple
-                                production applications and user roles.</p>
+                            <p>Secure authentication and authorization flows using Sanctum, JWT and RBAC across multiple production applications and user roles.</p>
                         </div>
-                        <div class="project-tags"><span>Sanctum</span><span>JWT</span><span>RBAC</span><span>REST
-                                APIs</span></div>
+                        <div class="project-tags"><span>Sanctum</span><span>JWT</span><span>RBAC</span><span>REST APIs</span></div>
                     </article>
+
                     <article class="project reveal glow-card">
                         <div>
                             <div class="project-number">API & CLOUD INTEGRATIONS</div>
                             <h3>Connected Enterprise Services</h3>
-                            <p>Third-party banking, payment, Firebase and AWS integrations with asynchronous processing,
-                                secure APIs and production infrastructure.</p>
+                            <p>Third-party banking, payment, Firebase and AWS integrations with asynchronous processing, secure APIs and production infrastructure.</p>
                         </div>
-                        <div class="project-tags"><span>REST
-                                APIs</span><span>AWS</span><span>SQS</span><span>Firebase</span></div>
+                        <div class="project-tags"><span>REST APIs</span><span>AWS</span><span>SQS</span><span>Firebase</span></div>
                     </article>
                 </div>
-            </div>
             </div>
         </section>
 

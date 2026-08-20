@@ -1,20 +1,90 @@
+/**
+ * Senior Full-Stack Engineer Portfolio Engine
+ * Author: Raviraj Chhasatiya
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Navigation Mobile Menu
-    const menu = document.querySelector('.menu');
-    const links = document.querySelector('.nav-links');
-    if (menu && links) {
-        menu.addEventListener('click', () => links.classList.toggle('open'));
+    initNavigation();
+    initTheme();
+    initRevealObserver();
+    initCardInteractions();
+    initSkillFilters();
+    initTerminal();
+    initClipboard();
+});
+
+/**
+ * 1. Navigation & Accessibility Handler
+ */
+function initNavigation() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (!menuToggle || !navLinks) return;
+
+    function toggleMenu(open) {
+        const isOpen = open !== undefined ? open : !navLinks.classList.contains('open');
+        navLinks.classList.toggle('open', isOpen);
+        menuToggle.setAttribute('aria-expanded', isOpen.toString());
     }
 
-    // 2. Intersection Observer for Reveal Elements & Stat Counters
+    menuToggle.addEventListener('click', () => toggleMenu());
+
+    // Close menu when clicking navigation links
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+    });
+
+    // Keyboard Navigation: Escape key closes menu
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+            toggleMenu(false);
+            menuToggle.focus();
+        }
+    });
+}
+
+/**
+ * 2. Light / Dark Theme Handler with localStorage
+ */
+function initTheme() {
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const isLight = currentTheme === 'light';
+            
+            if (!isLight) {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
+}
+
+/**
+ * 3. Intersection Observer for Scroll Reveals & Counters
+ */
+function initRevealObserver() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 
-                // Trigger counter if present
+                // Animate counters if present inside entry
                 const counters = entry.target.querySelectorAll('.counter');
-                counters.forEach(counter => animateCounter(counter));
+                counters.forEach(counter => animateCounter(counter, prefersReducedMotion));
 
                 observer.unobserve(entry.target);
             }
@@ -22,24 +92,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
 
-    // Animated Counter Function
-    function animateCounter(el) {
-        const target = parseInt(el.getAttribute('data-target'), 10) || 0;
-        const suffix = el.getAttribute('data-suffix') || '';
-        let current = 0;
-        const step = Math.max(1, Math.ceil(target / 30));
-        const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            el.textContent = current + suffix;
-        }, 40);
+function animateCounter(el, prefersReducedMotion) {
+    const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+    const suffix = el.getAttribute('data-suffix') || '';
+
+    if (prefersReducedMotion) {
+        el.textContent = target + suffix;
+        return;
     }
 
-    // 3. Mouse Spotlight & 3D Tilt for Glow Cards
+    let current = 0;
+    const step = Math.max(1, Math.ceil(target / 30));
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        el.textContent = current + suffix;
+    }, 40);
+}
+
+/**
+ * 4. Mouse Spotlight & Subtle 3D Card Tilt (Capped at ±2deg)
+ */
+function initCardInteractions() {
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    if (isTouchDevice) return;
+
     document.querySelectorAll('.glow-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
@@ -49,21 +131,25 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
 
-            // Subtle 3D tilt calculation
+            // Subtle 3D tilt (Capped at ±2deg to prevent excessive motion)
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -4;
-            const rotateY = ((x - centerX) / centerX) * 4;
+            const rotateX = ((y - centerY) / centerY) * -2;
+            const rotateY = ((x - centerX) / centerX) * 2;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-        });
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+        }, { passive: true });
 
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
         });
     });
+}
 
-    // 4. Skill Matrix Category Filter
+/**
+ * 5. Tech Stack Category Filtering
+ */
+function initSkillFilters() {
     const filterBtns = document.querySelectorAll('.skill-filter-btn');
     const skillChips = document.querySelectorAll('.chip');
 
@@ -84,130 +170,184 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+}
 
-    // 5. Interactive Terminal Engine
+/**
+ * 6. Interactive Engineering Terminal CLI (Safe textContent & Command History)
+ */
+function initTerminal() {
     const terminalOutput = document.getElementById('terminalOutput');
     const terminalInput = document.getElementById('terminalInput');
     const termButtons = document.querySelectorAll('.term-btn');
 
-    const COMMANDS = {
-        help: `
-            <p><strong>Available Commands:</strong></p>
-            <p><span class="highlight">skills</span> - View technical stack & architecture capabilities</p>
-            <p><span class="highlight">projects</span> - List enterprise & production projects</p>
-            <p><span class="highlight">experience</span> - View career background & achievements</p>
-            <p><span class="highlight">contact</span> - Get direct email & contact details</p>
-            <p><span class="highlight">clear</span> - Clear the terminal output</p>
-        `,
-        skills: `
-            <p><strong>⚡ Technical Stack:</strong></p>
-            <p>• Backend: Laravel (8-12), PHP 8+, REST APIs, Sanctum, JWT, RBAC</p>
-            <p>• Frontend: Vue.js 2/3, React.js, TypeScript, Tailwind, CSS3</p>
-            <p>• Database & Cloud: MySQL, Redis, AWS S3/SQS, Docker, Firebase</p>
-        `,
-        projects: `
-            <p><strong>🚀 Selected Production Projects:</strong></p>
-            <p>1. FinTech & Banking Engine (Laravel 12, Filament 4, Vue.js, Redis)</p>
-            <p>2. HRMS Workforce Platform (Laravel 8, Vue.js 2, AWS S3/SQS)</p>
-            <p>3. Community SaaS Platform (Laravel 12, Vue 3, TypeScript)</p>
-            <p>4. Solar Service & Dispatch App (Laravel 11, Flutter, Firebase)</p>
-        `,
-        experience: `
-            <p><strong>💼 Background:</strong> Senior Full Stack Developer & Architect with 4+ years building production-grade enterprise applications at Zignuts Technolab.</p>
-        `,
-        contact: `
-            <p><strong>📫 Contact Details:</strong></p>
-            <p>Email: <a href="mailto:chhasatiyaravi1904@gmail.com" style="color: #49e7ff;">chhasatiyaravi1904@gmail.com</a></p>
-            <p>Status: <span style="color: #19d3ae;">Open for Senior Engineering & Architectural roles</span></p>
-        `
+    if (!terminalOutput || !terminalInput) return;
+
+    const commandHistory = [];
+    let historyIndex = -1;
+
+    const PREDEFINED_RESPONSES = {
+        help: [
+            "Available Commands:",
+            "  whoami     - Developer profile & seniority summary",
+            "  stack      - Core technical architecture & language specs",
+            "  capabilities - Core engineering competencies",
+            "  projects   - Selected production applications",
+            "  experience - Career history & leadership background",
+            "  resume     - Download official resume PDF",
+            "  contact    - Direct communication channels",
+            "  clear      - Clear terminal console output"
+        ],
+        whoami: [
+            "Raviraj Chhasatiya — Senior Full-Stack Engineer & System Architect",
+            "Specializing in production Laravel applications, Vue.js/React frontends, REST API architecture, and AWS cloud deployments."
+        ],
+        stack: [
+            "⚡ Production Technical Profile:",
+            "• Backend: Laravel 8-12, PHP 8+, RESTful APIs, Sanctum, JWT, RBAC, Queue Architecture",
+            "• Frontend: Vue.js 2/3, React.js, TypeScript, Tailwind, CSS3",
+            "• Data & Cloud: MySQL, Redis, AWS S3/SQS, Docker, Linux, Supervisor, Firebase"
+        ],
+        capabilities: [
+            "🏗️ Engineering Capabilities:",
+            "1. System Architecture: Decoupled domain services & maintainable backend infrastructure",
+            "2. APIs & Integrations: Banking APIs, payment gateways, Sanctum/JWT authentication",
+            "3. Performance Scaling: MySQL query optimization, Redis cache layers, async queues",
+            "4. Cloud Production: AWS S3, SQS background jobs, Docker, live maintenance"
+        ],
+        projects: [
+            "🚀 Selected Production Work:",
+            "1. FinTech & Banking Systems (Laravel 12, Filament 4, Vue.js, Redis)",
+            "2. HRMS & Workforce Platform (Laravel 8, Vue.js 2, AWS S3/SQS)",
+            "3. Community SaaS Platform (Laravel 12, Vue 3, TypeScript)",
+            "4. Solar Service & Dispatch App (Laravel 11, Flutter, Firebase)"
+        ],
+        experience: [
+            "💼 Professional Experience:",
+            "Full Stack Developer / Senior Software Engineer at Zignuts Technolab (Jan 2022 — Present)",
+            "Architected enterprise banking software, HRMS platforms, and multi-tenant SaaS systems."
+        ],
+        resume: [
+            "📄 Official Resume: Opening resume.pdf link..."
+        ],
+        contact: [
+            "📫 Communication:",
+            "Email: chhasatiyaravi1904@gmail.com",
+            "Status: Open to Senior Full-Stack & System Architecture opportunities."
+        ]
     };
 
-    function runCommand(cmd) {
-        const cleanCmd = cmd.trim().toLowerCase();
-        
-        if (cleanCmd === 'clear') {
-            terminalOutput.innerHTML = '';
+    function runCommand(rawCmd) {
+        const cleanCmd = rawCmd.trim();
+        const cmdKey = cleanCmd.toLowerCase();
+
+        if (cmdKey === 'clear') {
+            terminalOutput.replaceChildren();
             return;
         }
 
+        if (cleanCmd !== '') {
+            commandHistory.push(cleanCmd);
+            historyIndex = commandHistory.length;
+        }
+
+        // Render command prompt safely
         const lineDiv = document.createElement('div');
         lineDiv.className = 'term-line';
-        lineDiv.innerHTML = `<span class="term-prompt">raviraj@portfolio:~$</span> <span class="term-command">${cleanCmd}</span>`;
+
+        const promptSpan = document.createElement('span');
+        promptSpan.className = 'term-prompt';
+        promptSpan.textContent = 'raviraj@portfolio:~$ ';
+
+        const commandSpan = document.createElement('span');
+        commandSpan.className = 'term-command';
+        commandSpan.textContent = cleanCmd;
+
+        lineDiv.appendChild(promptSpan);
+        lineDiv.appendChild(commandSpan);
         terminalOutput.appendChild(lineDiv);
 
+        // Render response safely using textContent / DOM nodes
         const responseDiv = document.createElement('div');
         responseDiv.className = 'term-response';
 
-        if (COMMANDS[cleanCmd]) {
-            responseDiv.innerHTML = COMMANDS[cleanCmd];
+        if (cmdKey === 'resume') {
+            window.open('resume.pdf', '_blank');
+        }
+
+        if (PREDEFINED_RESPONSES[cmdKey]) {
+            PREDEFINED_RESPONSES[cmdKey].forEach(line => {
+                const p = document.createElement('p');
+                p.textContent = line;
+                responseDiv.appendChild(p);
+            });
         } else if (cleanCmd !== '') {
-            responseDiv.innerHTML = `<p style="color: #ff5f56;">Command not recognized: "${cleanCmd}". Type <span class="highlight">help</span> for commands.</p>`;
+            const errP = document.createElement('p');
+            errP.style.color = '#ff5f56';
+            errP.textContent = `Command not recognized: "${cleanCmd}". Type 'help' for available commands.`;
+            responseDiv.appendChild(errP);
         }
 
         terminalOutput.appendChild(responseDiv);
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
     }
 
-    if (terminalInput) {
-        terminalInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                runCommand(terminalInput.value);
+    // Input Keydown Handler for Enter and Arrow Up/Down Command History
+    terminalInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            runCommand(terminalInput.value);
+            terminalInput.value = '';
+        } else if (e.key === 'ArrowUp') {
+            if (commandHistory.length > 0 && historyIndex > 0) {
+                historyIndex--;
+                terminalInput.value = commandHistory[historyIndex];
+            }
+            e.preventDefault();
+        } else if (e.key === 'ArrowDown') {
+            if (commandHistory.length > 0 && historyIndex < commandHistory.length - 1) {
+                historyIndex++;
+                terminalInput.value = commandHistory[historyIndex];
+            } else {
+                historyIndex = commandHistory.length;
                 terminalInput.value = '';
             }
-        });
-    }
+            e.preventDefault();
+        }
+    });
 
+    // Terminal Quick Action Buttons
     termButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const cmd = btn.getAttribute('data-cmd');
-            runCommand(cmd);
+            if (cmd) runCommand(cmd);
         });
     });
+}
 
-    // 6. Copy Email Button Handler
+/**
+ * 7. Copy Email Clipboard Tooltip
+ */
+function initClipboard() {
     const copyEmailBtn = document.getElementById('copyEmailBtn');
     const copyBtnText = document.getElementById('copyBtnText');
-    if (copyEmailBtn && copyBtnText) {
-        copyEmailBtn.addEventListener('click', () => {
-            const email = 'chhasatiyaravi1904@gmail.com';
-            navigator.clipboard.writeText(email).then(() => {
-                copyBtnText.textContent = 'Copied! ✓';
-                copyEmailBtn.style.background = 'rgba(25, 211, 174, 0.25)';
-                copyEmailBtn.style.borderColor = '#19d3ae';
-                copyEmailBtn.style.color = '#fff';
-                
-                setTimeout(() => {
-                    copyBtnText.textContent = 'Copy Email';
-                    copyEmailBtn.style.background = '';
-                    copyEmailBtn.style.borderColor = '';
-                    copyEmailBtn.style.color = '';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy email:', err);
-            });
-        });
-    }
-
-    // 7. Light/Dark Theme Switcher with localStorage
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme');
     
-    if (savedTheme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
+    if (!copyEmailBtn || !copyBtnText) return;
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    copyEmailBtn.addEventListener('click', () => {
+        const email = 'chhasatiyaravi1904@gmail.com';
+        navigator.clipboard.writeText(email).then(() => {
+            copyBtnText.textContent = 'Copied! ✓';
+            copyEmailBtn.style.background = 'rgba(25, 211, 174, 0.25)';
+            copyEmailBtn.style.borderColor = '#19d3ae';
+            copyEmailBtn.style.color = '#fff';
             
-            if (newTheme === 'light') {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'dark');
-            }
+            setTimeout(() => {
+                copyBtnText.textContent = 'Copy Email';
+                copyEmailBtn.style.background = '';
+                copyEmailBtn.style.borderColor = '';
+                copyEmailBtn.style.color = '';
+            }, 2000);
+        }).catch(err => {
+            console.error('Clipboard copy failed:', err);
         });
-    }
-});
+    });
+}

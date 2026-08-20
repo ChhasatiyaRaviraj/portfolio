@@ -1282,17 +1282,15 @@
         .metric {
             min-height: 175px;
             padding: 22px;
-            border: 1px solid var(--line);
+            border: 1px solid var(--card-border);
             border-radius: 18px;
-            background:
-                radial-gradient(circle at 100% 0%, rgba(73, 231, 255, .055), transparent 45%),
-                linear-gradient(145deg, #0e141e, #0a0e15);
+            background: var(--card-bg);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             overflow: hidden;
-            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background-color 0.3s ease;
         }
 
         .metric::after {
@@ -1327,9 +1325,10 @@
         .metric strong {
             display: block;
             margin-bottom: 7px;
-            color: #f5f7fb;
+            color: var(--text);
             font: 800 clamp(26px, 3vw, 40px) "Manrope", sans-serif;
             letter-spacing: -.055em;
+            transition: color 0.25s ease;
         }
 
         .metric span {
@@ -1498,16 +1497,43 @@
         }
 
         .glow-card:hover {
-            border-color: rgba(124, 92, 255, 0.3);
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(124, 92, 255, 0.15);
+            border-color: rgba(124, 92, 255, 0.4);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(124, 92, 255, 0.2);
         }
 
-        /* Light Theme Contrast Overrides */
+        .glow-card:hover h3,
+        .glow-card:hover h4,
+        .job:hover h3,
+        .project:hover h3 {
+            color: #49e7ff;
+            transition: color 0.25s ease;
+        }
+
+        /* Complete Light Theme System Overrides */
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-2: #f1f5f9;
+            --text: #0f172a;
+            --muted: #475569;
+            --line: #e2e8f0;
+            --accent: #4f46e5;
+            --accent-2: #0d9488;
+            --nav-bg: rgba(248, 250, 252, 0.88);
+            --card-bg: #ffffff;
+            --card-border: rgba(0, 0, 0, 0.08);
+        }
+
         [data-theme="light"] h1, 
         [data-theme="light"] h2, 
         [data-theme="light"] h3,
+        [data-theme="light"] h4,
         [data-theme="light"] .job h3,
-        [data-theme="light"] .logo {
+        [data-theme="light"] .logo,
+        [data-theme="light"] .proof-item strong,
+        [data-theme="light"] .capability-card h3,
+        [data-theme="light"] .arch-step h4,
+        [data-theme="light"] .secondary-projects-head h3 {
             color: #0f172a;
         }
 
@@ -1521,6 +1547,17 @@
 
         [data-theme="light"] .nav-links a:hover {
             color: #0f172a;
+        }
+
+        [data-theme="light"] .nav-resume-btn {
+            background: rgba(79, 70, 229, 0.08);
+            border-color: rgba(79, 70, 229, 0.25);
+            color: #4f46e5 !important;
+        }
+
+        [data-theme="light"] .nav-resume-btn:hover {
+            background: #4f46e5;
+            color: #ffffff !important;
         }
 
         [data-theme="light"] .gradient,
@@ -1544,56 +1581,164 @@
         [data-theme="light"] .job p,
         [data-theme="light"] .project p,
         [data-theme="light"] .section-head p,
+        [data-theme="light"] .capability-card p,
+        [data-theme="light"] .arch-step p,
+        [data-theme="light"] .project-problem,
+        [data-theme="light"] .proof-item span,
         [data-theme="light"] .contact p {
             color: #475569;
         }
 
-        [data-theme="light"] .project-count {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-        }
-
-        [data-theme="light"] .project-count strong {
-            color: #0f172a;
-        }
-
-        [data-theme="light"] .project-count span {
+        [data-theme="light"] .hero-tech-line {
             color: #64748b;
         }
 
-        [data-theme="light"] .project-number,
-        [data-theme="light"] .kicker {
-            color: #0d9488;
-            font-weight: 700;
+        [data-theme="light"] .hero-tech-line span {
+            color: #4338ca;
+            font-weight: 600;
         }
 
         [data-theme="light"] .btn-primary {
-            background: #4f46e5;
+            background: linear-gradient(135deg, #4f46e5, #4338ca);
             color: #ffffff !important;
             border-color: #4f46e5;
             box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
         }
 
         [data-theme="light"] .btn-primary:hover {
-            background: #4338ca;
+            background: linear-gradient(135deg, #4338ca, #3730a3);
             box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
         }
 
         [data-theme="light"] .btn-secondary {
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(0, 0, 0, 0.04);
             border-color: rgba(0, 0, 0, 0.12);
             color: #1e293b;
         }
 
         [data-theme="light"] .btn-secondary:hover {
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.2);
             color: #0f172a;
         }
 
+        /* SaaS Visualizer Light Theme */
+        [data-theme="light"] .system-visualizer {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .sys-header {
+            border-bottom-color: rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="light"] .sys-stat-node {
+            background: rgba(0, 0, 0, 0.02);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="light"] .sys-node-label {
+            color: #64748b;
+        }
+
+        [data-theme="light"] .sys-architecture-flow {
+            border-top-color: rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="light"] .sys-tag {
+            background: rgba(79, 70, 229, 0.08);
+            border-color: rgba(79, 70, 229, 0.2);
+            color: #4338ca;
+        }
+
+        [data-theme="light"] .sys-tag.alt {
+            background: rgba(13, 148, 136, 0.08);
+            border-color: rgba(13, 148, 136, 0.2);
+            color: #0f766e;
+        }
+
+        /* Proof Bar & Cards Light Theme */
+        [data-theme="light"] .hero-proof-bar,
+        [data-theme="light"] .glow-card {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        [data-theme="light"] .proof-divider {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        /* High-Visibility Light Theme Hover States */
+        [data-theme="light"] .glow-card:hover,
+        [data-theme="light"] .job:hover,
+        [data-theme="light"] .project:hover,
+        [data-theme="light"] .capability-card:hover,
+        [data-theme="light"] .metric:hover {
+            border-color: #4f46e5 !important;
+            box-shadow: 0 16px 40px rgba(79, 70, 229, 0.18), 0 0 0 1px rgba(79, 70, 229, 0.2) !important;
+            transform: translateY(-4px) !important;
+        }
+
+        [data-theme="light"] .glow-card:hover h3,
+        [data-theme="light"] .job:hover h3,
+        [data-theme="light"] .project:hover h3,
+        [data-theme="light"] .capability-card:hover h3,
+        [data-theme="light"] .metric:hover strong {
+            color: #4f46e5 !important;
+        }
+
+        [data-theme="light"] .chip:hover,
+        [data-theme="light"] .job-tags span:hover,
+        [data-theme="light"] .project-tags span:hover,
+        [data-theme="light"] .cap-tags span:hover {
+            background: rgba(79, 70, 229, 0.12) !important;
+            border-color: #4f46e5 !important;
+            color: #4f46e5 !important;
+            transform: translateY(-2px);
+        }
+
+        /* Skill Filters & Chips */
+        [data-theme="light"] .skill-filter-btn {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.08);
+            color: #475569;
+        }
+
+        [data-theme="light"] .skill-filter-btn:hover,
+        [data-theme="light"] .skill-filter-btn.active {
+            background: #4f46e5;
+            border-color: #4f46e5;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+        }
+
+        [data-theme="light"] .chip,
+        [data-theme="light"] .job-tags span,
+        [data-theme="light"] .project-tags span,
+        [data-theme="light"] .cap-tags span {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.08);
+            color: #334155;
+        }
+
+        [data-theme="light"] .project-number,
+        [data-theme="light"] .kicker,
+        [data-theme="light"] .arch-step-num {
+            color: #0d9488;
+            font-weight: 700;
+        }
+
+        [data-theme="light"] .enterprise-badge {
+            background: rgba(13, 148, 136, 0.08);
+            border-color: rgba(13, 148, 136, 0.25);
+            color: #0f766e;
+        }
+
         [data-theme="light"] .status-badge {
-            background: rgba(13, 148, 136, 0.1);
-            border-color: rgba(13, 148, 136, 0.3);
+            background: rgba(13, 148, 136, 0.08);
+            border-color: rgba(13, 148, 136, 0.25);
             color: #0f766e;
         }
 
@@ -1601,39 +1746,39 @@
             background-color: #0d9488;
         }
 
-        [data-theme="light"] .hero-image img {
-            border: 1px solid rgba(0, 0, 0, 0.12);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+        /* Contact Section Light Mode */
+        [data-theme="light"] .contact {
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+            border-color: rgba(79, 70, 229, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
         }
 
-        [data-theme="light"] .orb {
-            background: #818cf8;
-            opacity: 0.18;
-        }
-
-        [data-theme="light"] .orb2 {
-            background: #2dd4bf;
-            opacity: 0.18;
-        }
-
-        [data-theme="light"] .chip,
-        [data-theme="light"] .job-tags span,
-        [data-theme="light"] .project-tags span {
+        [data-theme="light"] .contact-email-chip {
             background: rgba(0, 0, 0, 0.04);
             border-color: rgba(0, 0, 0, 0.08);
-            color: #334155;
-        }
-
-        [data-theme="light"] .metric strong {
-            color: #0f172a;
-        }
-
-        [data-theme="light"] .metric span {
-            color: #475569;
-        }
-
-        [data-theme="light"] .metric i {
             color: #0d9488;
+        }
+
+        [data-theme="light"] .copy-email-btn {
+            background: rgba(79, 70, 229, 0.08);
+            border-color: rgba(79, 70, 229, 0.25);
+            color: #4f46e5;
+        }
+
+        [data-theme="light"] .copy-email-btn:hover {
+            background: #4f46e5;
+            color: #ffffff;
+        }
+
+        [data-theme="light"] .terminal-window {
+            background: #0f172a;
+            border-color: rgba(79, 70, 229, 0.25);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+        }
+
+        [data-theme="light"] footer {
+            color: #64748b;
+            border-top-color: rgba(0, 0, 0, 0.08);
         }
 
         /* Interactive Terminal Window */
@@ -1820,6 +1965,379 @@
                 padding-bottom: 4px;
             }
             .status-badge {
+                display: none;
+            }
+        }
+
+        /* Hero Tech Spec Line & Navigation Resume Button */
+        .hero-tech-line {
+            font-size: 13px;
+            color: #8998ac;
+            margin-bottom: 24px;
+            font-family: "Fira Code", monospace;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-tech-line span {
+            color: #c9c2ff;
+            font-weight: 500;
+        }
+
+        .nav-resume-btn {
+            padding: 5px 14px;
+            background: rgba(124, 92, 255, 0.12);
+            border: 1px solid rgba(124, 92, 255, 0.3);
+            border-radius: 999px;
+            color: #a78bfa !important;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.25s ease;
+        }
+
+        .nav-resume-btn:hover {
+            background: #7c5cff;
+            color: #fff !important;
+            border-color: #7c5cff;
+            box-shadow: 0 4px 14px rgba(124, 92, 255, 0.35);
+        }
+
+        /* SaaS Production System Architecture Visualizer */
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .system-visualizer {
+            width: 100%;
+            max-width: 480px;
+            padding: 24px;
+            background: rgba(8, 12, 19, 0.85);
+            border: 1px solid rgba(124, 92, 255, 0.25);
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(124, 92, 255, 0.12);
+        }
+
+        .sys-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 16px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .sys-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #19d3ae;
+            letter-spacing: 0.08em;
+        }
+
+        .sys-meta {
+            font-size: 11px;
+            font-family: "Fira Code", monospace;
+            color: #49e7ff;
+            background: rgba(73, 231, 255, 0.08);
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .sys-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .sys-stat-node {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 12px 14px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sys-node-label {
+            font-size: 11px;
+            color: #8998ac;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .sys-node-val {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .sys-node-val.green { color: #19d3ae; }
+        .sys-node-val.blue { color: #49e7ff; }
+        .sys-node-val.purple { color: #a78bfa; }
+        .sys-node-val.cyan { color: #38bdf8; }
+
+        .sys-architecture-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .sys-layer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .sys-tag {
+            font-size: 11px;
+            font-family: "Fira Code", monospace;
+            padding: 4px 8px;
+            background: rgba(124, 92, 255, 0.12);
+            border: 1px solid rgba(124, 92, 255, 0.25);
+            border-radius: 6px;
+            color: #cbd5e1;
+        }
+
+        .sys-tag.alt {
+            background: rgba(25, 211, 174, 0.1);
+            border-color: rgba(25, 211, 174, 0.25);
+            color: #19d3ae;
+        }
+
+        .sys-arrow {
+            font-size: 10px;
+            color: #718097;
+        }
+
+        /* Hero Proof Metrics Bar */
+        .hero-proof-container {
+            margin-top: 50px;
+        }
+
+        .hero-proof-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 24px 30px;
+            background: rgba(13, 18, 26, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .proof-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-align: center;
+        }
+
+        .proof-item strong {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 800;
+            color: #f5f7fb;
+            letter-spacing: -0.04em;
+        }
+
+        .proof-item span {
+            font-size: 13px;
+            color: #8998ac;
+            font-weight: 500;
+        }
+
+        .proof-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Engineering Capabilities Section */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .capability-card {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            border-radius: 18px;
+        }
+
+        .cap-icon {
+            font-size: 32px;
+            margin-bottom: 4px;
+        }
+
+        .capability-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #f5f7fb;
+        }
+
+        .capability-card p {
+            color: #a8b5c9;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .cap-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .cap-tags span {
+            font-size: 12px;
+            padding: 4px 10px;
+            background: rgba(124, 92, 255, 0.1);
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            border-radius: 6px;
+            color: #a78bfa;
+        }
+
+        /* System Architecture Pipeline Flow */
+        .arch-pipeline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 36px 30px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .arch-step {
+            flex: 1;
+            min-width: 160px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .arch-step-num {
+            font-size: 12px;
+            font-weight: 800;
+            color: #19d3ae;
+            font-family: "Fira Code", monospace;
+        }
+
+        .arch-step h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f5f7fb;
+        }
+
+        .arch-step p {
+            font-size: 13px;
+            color: #8998ac;
+            line-height: 1.5;
+        }
+
+        .arch-arrow {
+            color: #7c5cff;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* Selected Featured Work Cards */
+        .featured-projects {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .featured-card {
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .enterprise-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            background: rgba(25, 211, 174, 0.1);
+            border: 1px solid rgba(25, 211, 174, 0.25);
+            border-radius: 999px;
+            color: #19d3ae;
+            letter-spacing: 0.04em;
+        }
+
+        .project-problem {
+            color: #a8b5c9;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .secondary-projects-head {
+            margin: 40px 0 20px;
+        }
+
+        .secondary-projects-head h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f5f7fb;
+        }
+
+        .secondary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        /* Accessibility & Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .glow-card {
+                transform: none !important;
+            }
+            .hero-image {
+                animation: none !important;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .capabilities-grid,
+            .secondary-grid {
+                grid-template-columns: 1fr;
+            }
+            .arch-pipeline {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .arch-arrow {
+                transform: rotate(90deg);
+                margin: 4px 0;
+            }
+            .proof-divider {
                 display: none;
             }
         }
