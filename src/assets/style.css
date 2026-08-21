@@ -115,16 +115,26 @@
         }
 
         [data-theme="light"] .sun-icon {
-            display: none;
+            display: none !important;
         }
         [data-theme="light"] .moon-icon {
-            display: inline;
+            display: flex !important;
         }
         :root:not([data-theme="light"]) .sun-icon {
-            display: inline;
+            display: flex !important;
         }
         :root:not([data-theme="light"]) .moon-icon {
-            display: none;
+            display: none !important;
+        }
+
+        .theme-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-toggle-btn {
+            color: var(--text);
         }
 
         .nav-inner {
@@ -808,14 +818,7 @@
         }
 
         .hero::after {
-            content: "";
-            position: absolute;
-            width: 70vw;
-            height: 1px;
-            bottom: 10%;
-            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            opacity: .18;
-            animation: scan 6s linear infinite;
+            display: none;
         }
 
         .hero-content {
