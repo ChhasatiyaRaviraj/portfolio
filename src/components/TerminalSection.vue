@@ -176,6 +176,7 @@ const handleKeyDown = (e) => {
         <div class="terminal-input-line">
           <span class="term-prompt">raviraj@portfolio:~$</span>
           <input 
+            id="terminalInput"
             type="text" 
             v-model="inputCommand"
             @keydown="handleKeyDown"

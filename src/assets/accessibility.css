@@ -1,6 +1,6 @@
 
 /* Accessibility: Focus States */
-:focus-visible {
+:focus-visible:not(#terminalInput) {
     outline: 2px solid var(--accent);
     outline-offset: 4px;
     box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.2);
