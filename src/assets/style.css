@@ -120,7 +120,7 @@
             font-weight: 700;
         }
 
-        .logo span {
+        .logo .text-accent {
             color: var(--accent);
         }
 

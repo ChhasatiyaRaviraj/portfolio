@@ -39,8 +39,8 @@ onMounted(() => {
   <nav class="nav">
     <div class="container nav-inner">
       <a class="logo" href="#" aria-label="Raviraj Chhasatiya Home">
-        <span class="logo-full">Raviraj Chhasatiya</span>
-        <span class="logo-mark">R.</span>
+        <span class="logo-full">Raviraj<span class="text-accent">Chhasatiya</span></span>
+        <span class="logo-mark text-accent">R.</span>
       </a>
       <button class="menu" @click="toggleMenu" aria-label="Toggle navigation" :aria-expanded="isMenuOpen">☰</button>
       <div class="nav-links" :class="{ open: isMenuOpen }">
