@@ -9,6 +9,7 @@ import Architecture from './components/Architecture.vue'
 import Experience from './components/Experience.vue'
 import Projects from './components/Projects.vue'
 import Contact from './components/Contact.vue'
+import Skills from './components/Skills.vue'
 
 // Intersection Observer for Scroll Reveals
 const initRevealObserver = () => {
@@ -36,6 +37,7 @@ onMounted(() => {
     <Hero />
     <TerminalSection />
     <About />
+    <Skills />
     <Capabilities />
     <Architecture />
     <Experience />

@@ -65,55 +65,7 @@ onMounted(() => {
             services, and taking features through production.
           </p>
 
-          <div class="skill-group" id="skills">
-            <div class="skill-header">
-              <div class="skill-label">CORE STACK & ARCHITECTURE</div>
-              <div class="skill-filters">
-                <button 
-                  class="skill-filter-btn" 
-                  :class="{ active: activeFilter === 'all' }" 
-                  @click="setFilter('all')"
-                >All</button>
-                <button 
-                  class="skill-filter-btn" 
-                  :class="{ active: activeFilter === 'backend' }" 
-                  @click="setFilter('backend')"
-                >Backend</button>
-                <button 
-                  class="skill-filter-btn" 
-                  :class="{ active: activeFilter === 'frontend' }" 
-                  @click="setFilter('frontend')"
-                >Frontend</button>
-                <button 
-                  class="skill-filter-btn" 
-                  :class="{ active: activeFilter === 'database' }" 
-                  @click="setFilter('database')"
-                >Database</button>
-                <button 
-                  class="skill-filter-btn" 
-                  :class="{ active: activeFilter === 'cloud' }" 
-                  @click="setFilter('cloud')"
-                >Cloud & DevOps</button>
-              </div>
-            </div>
-            <div class="skills">
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'backend'">Laravel 8–12</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'backend'">PHP 8+</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'backend'">Filament 4</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'frontend'">Vue.js 2/3</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'frontend'">React.js</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'frontend'">TypeScript</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'frontend'">Flutter</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'database'">MySQL</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'database'">Redis</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'cloud'">AWS</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'cloud'">Docker</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'backend'">REST APIs</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'backend'">Sanctum</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'backend'">JWT</span>
-              <span class="chip" v-show="activeFilter === 'all' || activeFilter === 'backend'">RBAC</span>
-            </div>
-          </div>
+
         </div>
 
         <div class="about-metrics">

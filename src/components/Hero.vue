@@ -77,6 +77,17 @@ onMounted(() => {
   <section class="hero">
     <div class="orb"></div>
     <div class="orb2"></div>
+
+    <!-- Floating Skill Icons -->
+    <div class="floating-skills" aria-hidden="true">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" class="float-icon icon-1" alt="Laravel">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" class="float-icon icon-2" alt="Vue">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" class="float-icon icon-3" alt="PHP">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" class="float-icon icon-4" alt="MySQL">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" class="float-icon icon-5" alt="Docker">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" class="float-icon icon-6" alt="Redis">
+    </div>
+
     <div class="container hero-content reveal">
       <div class="hero-text">
         <span class="eyebrow">Senior Full-Stack Engineer · Laravel · Vue · APIs</span>
@@ -84,68 +95,13 @@ onMounted(() => {
         <p class="hero-copy">
           I design and ship scalable web applications, APIs, admin platforms, and enterprise integrations — from system architecture and database optimization to cloud production deployment.
         </p>
-        <div class="hero-tech-line">
-          <span>Laravel</span> · <span>PHP</span> · <span>Vue</span> · <span>React</span> · <span>MySQL</span> · <span>Redis</span> · <span>AWS</span> · <span>Docker</span>
-        </div>
+
         <div class="actions">
           <a class="btn btn-primary" href="#projects">View My Work →</a>
           <a class="btn btn-secondary" href="/Raviraj_Chhasatiya_Senior_Full_Stack_Engineer_Resume.pdf" target="_blank" rel="noopener">Download Resume ↓</a>
         </div>
       </div>
       
-      <div class="hero-visual">
-        <div 
-          class="system-visualizer glow-card" 
-          aria-hidden="true" 
-          ref="card"
-          @mousemove="handleMouseMove" 
-          @mouseleave="handleMouseLeave"
-        >
-          <div class="sys-header">
-            <div class="sys-status">
-              <span class="pulse-dot"></span>
-              <span>PRODUCTION SYSTEM ONLINE</span>
-            </div>
-            <div class="sys-meta">HEALTH 99.9%</div>
-          </div>
-          
-          <div class="sys-grid">
-            <div class="sys-stat-node">
-              <span class="sys-node-label">API Status</span>
-              <strong class="sys-node-val green">Active 200 OK</strong>
-            </div>
-            <div class="sys-stat-node">
-              <span class="sys-node-label">Transactions</span>
-              <strong class="sys-node-val blue">12,842 / day</strong>
-            </div>
-            <div class="sys-stat-node">
-              <span class="sys-node-label">Queue Jobs</span>
-              <strong class="sys-node-val purple">1,284 Async</strong>
-            </div>
-            <div class="sys-stat-node">
-              <span class="sys-node-label">Integrations</span>
-              <strong class="sys-node-val cyan">24 Connected</strong>
-            </div>
-          </div>
-
-          <div class="sys-architecture-flow">
-            <div class="sys-layer">
-              <span class="sys-tag">Laravel 12</span>
-              <span class="sys-arrow">➔</span>
-              <span class="sys-tag">Redis Cache</span>
-              <span class="sys-arrow">➔</span>
-              <span class="sys-tag">MySQL DB</span>
-            </div>
-            <div class="sys-layer sub">
-              <span class="sys-tag alt">AWS SQS</span>
-              <span class="sys-arrow">➔</span>
-              <span class="sys-tag alt">Sanctum Auth</span>
-              <span class="sys-arrow">➔</span>
-              <span class="sys-tag alt">Cloud S3</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Compact Proof Metrics Row -->

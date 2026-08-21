@@ -79,8 +79,8 @@
             top: 0;
             z-index: 20;
             backdrop-filter: blur(18px);
-            background: var(--nav-bg);
-            border-bottom: 1px solid var(--line);
+            background: transparent;
+            border-bottom: none;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
@@ -205,17 +205,55 @@
             left: -120px;
         }
 
+        /* Floating Skills */
+        .floating-skills {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .float-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.4;
+            filter: grayscale(30%) brightness(1.2);
+            animation: float-random 15s infinite ease-in-out alternate;
+        }
+
+        .icon-1 { top: 15%; left: 8%; animation-delay: 0s; width: 70px; height: 70px; }
+        .icon-2 { top: 65%; left: 12%; animation-delay: -3s; width: 55px; height: 55px; }
+        .icon-3 { top: 12%; right: 12%; animation-delay: -5s; width: 65px; height: 65px; }
+        .icon-4 { top: 60%; right: 8%; animation-delay: -7s; width: 80px; height: 80px; }
+        .icon-5 { top: 75%; left: 35%; animation-delay: -9s; width: 45px; height: 45px; }
+        .icon-6 { top: 20%; right: 40%; animation-delay: -11s; width: 60px; height: 60px; }
+
+        @keyframes float-random {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.3; }
+            33% { transform: translate(15px, -30px) rotate(15deg) scale(1.1); opacity: 0.5; }
+            66% { transform: translate(-10px, -15px) rotate(-10deg) scale(0.95); opacity: 0.4; }
+            100% { transform: translate(-20px, 20px) rotate(20deg) scale(1.05); opacity: 0.35; }
+        }
+
         .hero-content {
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            flex-direction: column;
             gap: 40px;
+            text-align: center;
         }
 
         .hero-text {
             flex: 1;
-            max-width: 650px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero-image {
@@ -252,10 +290,9 @@
 
         h1 {
             font-family: "Manrope", sans-serif;
-            font-size: clamp(48px, 8vw, 92px);
-            line-height: .98;
-            letter-spacing: -.055em;
-            max-width: 900px;
+            font-size: clamp(32px, 5vw, 64px);
+            line-height: 1.15;
+            letter-spacing: -.03em;
         }
 
         h1 .gradient {
@@ -268,7 +305,7 @@
         .hero-copy {
             color: var(--muted);
             max-width: 690px;
-            font-size: 18px;
+            font-size: 16px;
             margin: 28px 0;
         }
 
@@ -276,6 +313,7 @@
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
@@ -560,9 +598,27 @@
         }
 
         .contact:hover {
-            border-color: rgba(124, 92, 255, 0.4);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(124, 92, 255, 0.15);
-            transform: translateY(-2px);
+            border-color: #3b4860;
+            background: linear-gradient(145deg, #111824, #0a0e15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .contact::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 1px;
+            transform: scaleX(0);
+            transform-origin: left;
+            background: linear-gradient(90deg, var(--cyan), var(--violet));
+            transition: transform .45s ease;
+        }
+
+        .contact:hover::after {
+            transform: scaleX(1);
         }
 
         .contact-badge-row {
@@ -1010,6 +1066,7 @@
 
         .job:hover {
             padding-left: 18px;
+            border-color: #3b4860;
         }
 
         .job:hover::before {
@@ -1507,8 +1564,9 @@
         }
 
         .glow-card:hover {
-            border-color: rgba(124, 92, 255, 0.4);
+            border-color: #3b4860;
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(124, 92, 255, 0.2);
+            transform: translateY(-5px);
         }
 
         .glow-card:hover h3,
@@ -1809,11 +1867,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #0f1522;
-            padding: 12px 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: #101623;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         .terminal-buttons {
@@ -1839,7 +1897,14 @@
 
         .terminal-actions {
             display: flex;
-            gap: 6px;
+            gap: 8px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        .terminal-actions::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
         }
 
         .term-btn {
@@ -1861,12 +1926,28 @@
         }
 
         .terminal-body {
-            padding: 20px;
-            max-height: 280px;
+            padding: 24px;
+            max-height: 320px;
             overflow-y: auto;
             color: #e2e8f0;
             font-size: 14px;
             line-height: 1.7;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(124, 92, 255, 0.4) transparent;
+        }
+
+        .terminal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        .terminal-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .terminal-body::-webkit-scrollbar-thumb {
+            background: rgba(124, 92, 255, 0.3);
+            border-radius: 4px;
+        }
+        .terminal-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(124, 92, 255, 0.6);
         }
 
         .term-line {
@@ -1908,9 +1989,9 @@
         .terminal-input-line {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            background: #0b0f18;
+            gap: 12px;
+            padding: 16px 24px;
+            background: rgba(0, 0, 0, 0.2);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
