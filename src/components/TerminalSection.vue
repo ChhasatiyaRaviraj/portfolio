@@ -61,7 +61,7 @@ const PREDEFINED_RESPONSES = {
     "Architected enterprise banking software, HRMS platforms, and multi-tenant SaaS systems."
   ],
   resume: [
-    "📄 Official Resume: Opening resume.pdf link..."
+    "📄 Official Resume: Opening Raviraj_Chhasatiya_Senior_Full_Stack_Engineer_Resume.pdf link..."
   ],
   contact: [
     "📫 Communication:",
@@ -88,7 +88,7 @@ const runCommand = (cmd) => {
   outputLines.value.push({ type: 'input', text: cleanCmd })
 
   if (cmdKey === 'resume') {
-    window.open('/resume.pdf', '_blank')
+    window.open('/Raviraj_Chhasatiya_Senior_Full_Stack_Engineer_Resume.pdf', '_blank')
   }
 
   if (PREDEFINED_RESPONSES[cmdKey]) {

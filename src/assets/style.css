@@ -40,7 +40,7 @@
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: "DM Sans", sans-serif;
+            font-family: 'Manrope', sans-serif;
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
@@ -116,7 +116,6 @@
         }
 
         .logo {
-            font-family: "Space Grotesk";
             font-size: 22px;
             font-weight: 700;
         }

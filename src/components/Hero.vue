@@ -89,7 +89,7 @@ onMounted(() => {
         </div>
         <div class="actions">
           <a class="btn btn-primary" href="#projects">View My Work →</a>
-          <a class="btn btn-secondary" href="/resume.pdf" target="_blank" rel="noopener">Download Resume ↓</a>
+          <a class="btn btn-secondary" href="/Raviraj_Chhasatiya_Senior_Full_Stack_Engineer_Resume.pdf" target="_blank" rel="noopener">Download Resume ↓</a>
         </div>
       </div>
       
@@ -152,22 +152,22 @@ onMounted(() => {
     <div class="container hero-proof-container">
       <div class="hero-proof-bar reveal glow-card">
         <div class="proof-item">
-          <strong class="counter" data-target="4" data-suffix="+">0+</strong>
+          <strong class="counter" data-target="4" data-suffix="+">4+</strong>
           <span>Years Experience</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <strong class="counter" data-target="10" data-suffix="+">0+</strong>
+          <strong class="counter" data-target="10" data-suffix="+">10+</strong>
           <span>Production Projects</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <strong class="counter" data-target="5" data-suffix="+">0+</strong>
+          <strong class="counter" data-target="5" data-suffix="+">5+</strong>
           <span>Business Domains</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-item">
-          <strong class="counter" data-target="20" data-suffix="+">0+</strong>
+          <strong class="counter" data-target="20" data-suffix="+">20+</strong>
           <span>Integrations Delivered</span>
         </div>
       </div>

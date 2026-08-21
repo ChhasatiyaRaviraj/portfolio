@@ -15,10 +15,12 @@
             <time>Jan 2022 — Present</time>
           </div>
           <div class="company">Zignuts Technolab Pvt. Ltd.</div>
-          <p>Build enterprise-scale applications using Laravel, Vue.js, React.js and secure REST APIs.
-            Designed authentication and authorization with Sanctum and JWT across 3+ production
-            applications, optimized database performance with Redis caching, integrated banking and
-            cloud services, and delivered features in Agile cycles.</p>
+          <ul class="job-bullets">
+            <li><strong>Built</strong> enterprise-scale applications using Laravel, Vue.js, and React.js to deliver secure REST APIs.</li>
+            <li><strong>Architected</strong> authentication and authorization flows using Sanctum and JWT across 3+ production applications.</li>
+            <li><strong>Optimized</strong> database queries and caching strategies using MySQL and Redis for high-performance APIs.</li>
+            <li><strong>Integrated</strong> banking and cloud services to streamline business processes in Agile cycles.</li>
+          </ul>
           <div class="job-tags">
             <span>Laravel</span><span>Vue.js</span><span>React</span><span>Sanctum</span><span>JWT</span><span>Redis</span><span>REST APIs</span>
           </div>
@@ -30,9 +32,11 @@
             <time>Production focus</time>
           </div>
           <div class="company">Banking integrations · Transaction systems</div>
-          <p>Architected bank management capabilities with real-time analytics, audit logs and
-            transaction lifecycle workflows. Built secure payment integrations, API monitoring and
-            workflow automation while maintaining traceability across financial operations.</p>
+          <ul class="job-bullets">
+            <li><strong>Architected</strong> bank management capabilities with real-time analytics and transaction lifecycle workflows.</li>
+            <li><strong>Built</strong> secure payment integrations and API monitoring for enterprise financial operations.</li>
+            <li><strong>Implemented</strong> workflow automation and audit logs to maintain traceability across financial transactions.</li>
+          </ul>
           <div class="job-tags">
             <span>FinTech</span><span>Banking APIs</span><span>Audit Logs</span><span>Analytics</span><span>Workflow Automation</span>
           </div>
@@ -44,10 +48,11 @@
             <time>Cross-domain</time>
           </div>
           <div class="company">HRMS · SaaS · Energy · Business Platforms</div>
-          <p>Delivered HRMS, productivity, community management and solar service platforms with
-            role-based access, workflow automation, reporting, asynchronous jobs, mobile APIs and
-            cloud integrations. Mentored junior developers on Laravel architecture and modern
-            frontend practices.</p>
+          <ul class="job-bullets">
+            <li><strong>Delivered</strong> HRMS, community management, and solar platforms using role-based access and workflow automation.</li>
+            <li><strong>Integrated</strong> mobile APIs, asynchronous jobs, and cloud services for robust business operations.</li>
+            <li><strong>Mentored</strong> junior developers on Laravel architecture and modern frontend practices to improve team velocity.</li>
+          </ul>
           <div class="job-tags">
             <span>HRMS</span><span>SaaS</span><span>RBAC</span><span>Cloud Integrations</span><span>Agile Mentoring</span>
           </div>
@@ -56,3 +61,18 @@
     </div>
   </section>
 </template>
+
+<style scoped>
+.job-bullets {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  color: var(--muted);
+}
+.job-bullets li {
+  margin-bottom: 8px;
+}
+.job-bullets strong {
+  color: var(--text);
+}
+</style>

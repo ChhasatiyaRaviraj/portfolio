@@ -50,7 +50,7 @@ onMounted(() => {
         <a href="#skills" @click="isMenuOpen = false">Stack</a>
         <a href="#about" @click="isMenuOpen = false">About</a>
         <a href="#contact" @click="isMenuOpen = false">Contact</a>
-        <a href="/resume.pdf" class="nav-resume-btn" target="_blank" rel="noopener">Resume ↗</a>
+        <a href="/Raviraj_Chhasatiya_Senior_Full_Stack_Engineer_Resume.pdf" class="nav-resume-btn" target="_blank" rel="noopener">Resume ↗</a>
       </div>
       <div class="nav-actions">
         <button class="theme-toggle-btn" @click="toggleTheme" aria-label="Toggle Light or Dark Theme" title="Toggle Theme">

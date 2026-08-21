@@ -120,7 +120,7 @@ onMounted(() => {
           <article class="metric metric-large glow-card">
             <span class="metric-index">01</span>
             <div>
-              <strong class="counter" data-target="4" data-suffix="+">0+</strong>
+              <strong class="counter" data-target="4" data-suffix="+">4+</strong>
               <span>Years of production software engineering</span>
             </div>
             <i>Experience</i>
@@ -129,7 +129,7 @@ onMounted(() => {
           <article class="metric glow-card">
             <span class="metric-index">02</span>
             <div>
-              <strong class="counter" data-target="10" data-suffix="+">0+</strong>
+              <strong class="counter" data-target="10" data-suffix="+">10+</strong>
               <span>Products shipped to production</span>
             </div>
           </article>
